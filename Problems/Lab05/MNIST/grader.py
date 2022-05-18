@@ -27,7 +27,8 @@ class ModelAbstract:
         self.layer.append(layer)
 
     def getLoss(self, t):
-        return self.layer[-1].loss(t)
+        self.error = self.layer[-1].loss(t)
+        return self.error
 
     def forward(self, x):
         raise Exception("Not implemented forward")
@@ -60,8 +61,9 @@ def get_data(encoding):
     y_train = np.array([encoding[i] for i in mnist_train.targets])
     return x_train, y_train
 
+
 if __name__ == '__main__':
-    from solution import get_model
+    from mnist import get_model
 
     nb_epochs = 120
     nb_inner_epochs = 100
