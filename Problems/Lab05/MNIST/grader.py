@@ -3,7 +3,7 @@ import torchvision.datasets as dsets
 import torchvision.transforms as transforms
 
 
-class NeuronInterface:
+class NeuronAbstract:
     def __init__(self):
         raise Exception("Not implemented constructor")
 
@@ -17,7 +17,7 @@ class NeuronInterface:
         raise Exception("Not implemented backward")
 
 
-class Model:
+class ModelAbstract:
     def __init__(self, learning_rate):
         self.layer = []
         self.error = None
@@ -26,18 +26,14 @@ class Model:
     def add(self, layer):
         self.layer.append(layer)
 
-    def forward(self, x):
-        for layer in self.layer:
-            x = layer.forward(x)
-        return x
-
     def getLoss(self, t):
         return self.layer[-1].loss(t)
 
+    def forward(self, x):
+        raise Exception("Not implemented forward")
+
     def backward(self):
-        self.error = 1
-        for layer in self.layer[::-1]:
-            self.error = layer.backward(self.error, self.learning_rate)
+        raise Exception("Not implemented backward")
 
 
 def sigmoid(x):
@@ -65,7 +61,7 @@ def get_data(encoding):
     return x_train, y_train
 
 if __name__ == '__main__':
-    from mnist import get_model
+    from solution import get_model
 
     nb_epochs = 120
     nb_inner_epochs = 100

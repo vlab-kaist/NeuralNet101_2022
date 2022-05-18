@@ -1,21 +1,28 @@
 import numpy as np
-from grader import softmax, cross_entropy_error, sigmoid, NeuronInterface, Model
+from grader import softmax, cross_entropy_error, sigmoid, NeuronAbstract, ModelAbstract
 
 
-class Softmax(NeuronInterface):
+class Softmax(NeuronAbstract):
     def __init__(self):
         pass  # Implement Here
 
 
-class Sigmoid(NeuronInterface):
+class Sigmoid(NeuronAbstract):
     def __init__(self):
         pass  # Implement Here
 
 
-class Affine(NeuronInterface):
+class Affine(NeuronAbstract):
     def __init__(self, input_size, output_size):
         pass  # Implement Here
 
+
+class Model(ModelAbstract):
+    def forward(self, x):
+        pass  # Implement Here
+
+    def backward(self):
+        pass  # Implement Here
 
 def get_model():
     model = Model()
