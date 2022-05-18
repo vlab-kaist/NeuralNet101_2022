@@ -1,16 +1,25 @@
-## MNIST
+# MNIST
 
-### Direction
+## Direction
+
+### Download dependencies
 
 You should first download dependencies first : numpy and torchvision.
 
 Copy two files to local : grader.py and mnist.py.
 
-You need to implement class Softmax, Sigmoid, and Affine and one function that returns Model that predicts MNIST.
+### Implement
 
-Each class is implementation of Neuron that has forward and backward functions.
+You need to implement three class implements NeuronAbstract : Softmax, Sigmoid, and Affine,
+one class implements ModelAbstract : Model,
+and one function that returns Model that predicts MNIST.
+
+Softmax, Sigmoid, Affine are implementation of Neuron that has forward and backward functions.
+Model is implementation of ModelAbstract that has forward and backward functions.
 
 You can test your code by running ```grader.py```. Note that you need to run grader.py in the same directory as mnist.py.
+
+### Submit
 
 You only need to submit mnist.py.
 
