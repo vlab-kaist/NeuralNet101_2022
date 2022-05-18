@@ -64,17 +64,6 @@ def get_data(encoding):
     y_train = np.array([encoding[i] for i in mnist_train.targets])
     return x_train, y_train
 
-def get_accuracy():
-    mnist_test = dsets.MNIST(root="MNIST_data/", train=False, transform=transforms.ToTensor(), download=True)
-    x_test = mnist_test.data.view(-1, 28 * 28).float()/255
-    y_test = np.array([encoding[i] for i in mnist_test.targets])
-    prediction = model.forward(x_test)
-    suggestion = np.argmax(prediction, axis=1)
-    answer = np.argmax(y_test, axis=1)
-    correct_num = np.sum(suggestion==answer)
-    total_num = len(answer)
-    return str(correct_num) + " / " + str(total_num) + str("  (%.2f%%)"%(correct_num/total_num*100))
-
 if __name__ == '__main__':
     from mnist import get_model
 
